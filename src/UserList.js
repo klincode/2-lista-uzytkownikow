@@ -2,8 +2,6 @@ import React from 'react';
 import UserItem from './UserItem'
 import './UserList.css'
 const UserList = (props) => {
-  // console.log(userList);
-
   const users = props.userList.reverse().map((item, index) => {
     return (
       <UserItem key={index} user={item} userId={index} remove={props.remove} />

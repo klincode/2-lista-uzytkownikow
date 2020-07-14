@@ -1,7 +1,6 @@
 import React from 'react';
 import './UserItem.css'
 const UserItem = (props) => {
-  console.log(props);
   const { id, name } = props.user;
   return (
     <li className='user-item'>

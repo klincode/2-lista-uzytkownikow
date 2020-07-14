@@ -25,7 +25,6 @@ class Users extends Component {
   }
 
   removeUser = (id) => {
-    console.log(id);
     const userList = this.state.userList.filter((item) => {
       return item.id !== id
     })
@@ -33,8 +32,6 @@ class Users extends Component {
 
   }
   render() {
-    // console.log(this.state.userList);
-
     return (
       <div className="users">
         <h1>User's List</h1>
