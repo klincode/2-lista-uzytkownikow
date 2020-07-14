@@ -10,15 +10,26 @@ class Users extends Component {
       userList: []
     }
   }
-
+  userID = 1;
   addUser = (e, value) => {
     e.preventDefault();
-
+    const newUser = {
+      id: this.userID++,
+      name: value,
+    }
     this.setState(prevState => {
       return (
-        { userList: [...prevState.userList, value] }
+        { userList: [...prevState.userList, { ...newUser }] }
       )
     })
+  }
+
+  removeUser = (id) => {
+    console.log(id);
+    const userList = this.state.userList.filter((item) => {
+      return item.id !== id
+    })
+    this.setState({ userList })
 
   }
   render() {
@@ -28,7 +39,7 @@ class Users extends Component {
       <div className="users">
         <h1>User's List</h1>
         <AddUser add={this.addUser} />
-        <UserList userList={this.state.userList} />
+        <UserList userList={this.state.userList} remove={this.removeUser} />
       </div>
     );
   }

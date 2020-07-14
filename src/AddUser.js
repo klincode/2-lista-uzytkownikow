@@ -4,7 +4,7 @@ class AddUser extends Component {
   constructor(props) {
     super();
     this.state = {
-      name: 'test'
+      name: ''
     }
   }
 
@@ -19,12 +19,14 @@ class AddUser extends Component {
     })
   }
 
+  clearInput = () => {
+    this.setState({ name: '' })
+  }
 
   render() {
     const isInputEmpty = this.state.name.length > 0 ? false : true;
-
     return (
-      <form className="add-user" onSubmit={(e) => this.props.add(e, this.state.name)}>
+      <form className="add-user" onSubmit={(e) => { this.props.add(e, this.state.name); this.clearInput() }}>
         <input type="text" name="name" placeholder="Enter name" value={this.state.name} onChange={this.handleChange} />
         <button type="submit" disabled={isInputEmpty}>Add user</button>
       </form>

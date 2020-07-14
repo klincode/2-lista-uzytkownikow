@@ -1,17 +1,17 @@
 import React from 'react';
 import UserItem from './UserItem'
 import './UserList.css'
-const UserList = ({ userList }) => {
-  console.log(userList);
+const UserList = (props) => {
+  // console.log(userList);
 
-  const users = userList.reverse().map((item, index) => {
+  const users = props.userList.reverse().map((item, index) => {
     return (
-      <UserItem key={index} userName={item} />
+      <UserItem key={index} user={item} userId={index} remove={props.remove} />
     )
   })
   return (
     <ul>
-      {users}
+      {users.length > 0 ? users : "Brak elementów do wyświetlenia..."}
     </ul>
   );
 }
