@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
 import './AddUser.css'
-const AddUser = () => {
-  return (
-    <form className="add-user">
-      <input type="text" name="name" placeholder="Enter name" />
-      <button type="submit">Add user</button>
-    </form>
-  );
+class AddUser extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      name: 'test'
+    }
+  }
+
+  handleChange = (e) => {
+    const name = e.target.value;
+    this.setState(prevState => {
+      return (
+        {
+          name
+        }
+      )
+    })
+  }
+
+
+  render() {
+    const isInputEmpty = this.state.name.length > 0 ? false : true;
+
+    return (
+      <form className="add-user" onSubmit={(e) => this.props.add(e, this.state.name)}>
+        <input type="text" name="name" placeholder="Enter name" value={this.state.name} onChange={this.handleChange} />
+        <button type="submit" disabled={isInputEmpty}>Add user</button>
+      </form>
+    );
+  }
 }
 
 export default AddUser;

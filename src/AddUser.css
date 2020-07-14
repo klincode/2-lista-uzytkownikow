@@ -17,6 +17,12 @@ button:hover {
   cursor: pointer;
 }
 
+
+button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
 input {
   font-size: 17px;
   line-height: 42px;
