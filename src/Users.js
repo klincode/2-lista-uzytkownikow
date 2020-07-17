@@ -7,19 +7,20 @@ class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userList: []
+      userList: [],
+      incrementedId: 1
     }
   }
-  userID = 1;
+  // userID = 1;
   addUser = (e, value) => {
     e.preventDefault();
     const newUser = {
-      id: this.userID++,
+      id: this.state.incrementedId,
       name: value,
     }
     this.setState(prevState => {
       return (
-        { userList: [...prevState.userList, { ...newUser }] }
+        { userList: [...prevState.userList, { ...newUser }], incrementedId: prevState.incrementedId + 1 }
       )
     })
   }
